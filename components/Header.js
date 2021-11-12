@@ -3,7 +3,7 @@ import { useState } from 'react';
 const Header = () => {
   const [open, setOpen] = useState(false);
   return (
-    <nav className="bg-gray-800 w-full relative">
+    <nav className="bg-gray-800 w-full relative z-[1000]">
       <div className="container mx-auto px-4 0">
         <div className="flex justify-between">
           <div className="flex space-x-4">
@@ -44,30 +44,30 @@ const Header = () => {
             {open ? (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6"
+                className="h-6 w-6"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
                   d="M6 18L18 6M6 6l12 12"
                 />
               </svg>
             ) : (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6"
+                className="h-6 w-6"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
                   d="M4 6h16M4 12h16M4 18h16"
                 />
               </svg>
@@ -78,8 +78,8 @@ const Header = () => {
 
       <div
         className={`${
-          open && 'opacity-100'
-        }  md:hidden absolute top-20 right-0 min-h-screen w-72 bg-gray-800 transform  opacity-0 transition duration-500 `}
+          open ? 'opacity-100' : 'opacity-0'
+        }  md:hidden absolute top-20 right-0  min-h-[calc(100vh-80px)] w-72 bg-gray-800 transform  transition duration-500 `}
       >
         <ul className="flex flex-col items-start space-y-5 text-gray-50 font-semibold text-lg cursor-pointer p-3">
           <li className="hover:bg-gray-100 hover:text-purple-800 hover:px-2 hover:py-1 py-1 px-2 rounded-lg transition duration-300">
