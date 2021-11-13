@@ -3,7 +3,7 @@ import { useState } from 'react';
 const Header = () => {
   const [open, setOpen] = useState(false);
   return (
-    <nav className="bg-gray-800 w-full relative z-[1000]">
+    <nav className="bg-gray-600 w-full relative z-[1000]">
       <div className="container mx-auto px-4 0">
         <div className="flex justify-between">
           <div className="flex space-x-4">
