@@ -78,7 +78,7 @@ const Header = () => {
 
       <div
         className={`${
-          open ? 'opacity-100' : 'opacity-0'
+          open ? 'opacity-100' : 'hidden opacity-0'
         }  md:hidden absolute top-20 right-0  min-h-[calc(100vh-80px)] w-72 bg-gray-800 transform  transition duration-500 `}
       >
         <ul className="flex flex-col items-start space-y-5 text-gray-50 font-semibold text-lg cursor-pointer p-3">
