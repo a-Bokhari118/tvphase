@@ -3,6 +3,6 @@
 
 @layer base {
   body {
-    @apply bg-[#040714];
+    @apply bg-gradient-to-br from-[rgb(35,35,39)] to-[rgb(0,0,0)];
   }
 }

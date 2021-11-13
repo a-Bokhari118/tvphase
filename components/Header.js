@@ -76,30 +76,32 @@ const Header = () => {
         </div>
       </div>
 
-      <div
-        className={`${
-          open ? 'opacity-100' : 'hidden opacity-0'
-        }  md:hidden absolute top-20 right-0  min-h-[calc(100vh-80px)] w-72 bg-gray-800 transform  transition duration-500 `}
-      >
-        <ul className="flex flex-col items-start space-y-5 text-gray-50 font-semibold text-lg cursor-pointer p-3">
-          <li className="hover:bg-gray-100 hover:text-purple-800 hover:px-2 hover:py-1 py-1 px-2 rounded-lg transition duration-300">
-            Movies
-          </li>
-          <li className="hover:bg-gray-100 hover:text-purple-800 hover:px-2 hover:py-1 py-1 px-2 rounded-lg transition duration-300">
-            TV Series
-          </li>
-          <li className="hover:bg-gray-100 hover:text-purple-800 hover:px-2 hover:py-1 py-1 px-2 rounded-lg transition duration-300">
-            New Relased
-          </li>
-          <li className="hover:bg-gray-100 hover:text-purple-800 hover:px-2 hover:py-1 py-1 px-2 rounded-lg transition duration-300">
-            My List
-          </li>
-          <li className="text-gray-50 font-semibold py-1 px-2">login</li>
-          <li className="py-1 px-2 border-none rounded bg-gray-50 text-purple-800 font-semibold">
-            SignUp
-          </li>
-        </ul>
-      </div>
+      {open && (
+        <div
+          className={`${
+            open ? 'opacity-100' : 'opacity-0'
+          } md:hidden absolute top-20 right-0  min-h-[calc(100vh-80px)] w-72 bg-gray-800 transform  transition duration-500`}
+        >
+          <ul className="flex flex-col items-start space-y-5 text-gray-50 font-semibold text-lg cursor-pointer p-3">
+            <li className="hover:bg-gray-100 hover:text-purple-800 hover:px-2 hover:py-1 py-1 px-2 rounded-lg transition duration-300">
+              Movies
+            </li>
+            <li className="hover:bg-gray-100 hover:text-purple-800 hover:px-2 hover:py-1 py-1 px-2 rounded-lg transition duration-300">
+              TV Series
+            </li>
+            <li className="hover:bg-gray-100 hover:text-purple-800 hover:px-2 hover:py-1 py-1 px-2 rounded-lg transition duration-300">
+              New Relased
+            </li>
+            <li className="hover:bg-gray-100 hover:text-purple-800 hover:px-2 hover:py-1 py-1 px-2 rounded-lg transition duration-300">
+              My List
+            </li>
+            <li className="text-gray-50 font-semibold py-1 px-2">login</li>
+            <li className="py-1 px-2 border-none rounded bg-gray-50 text-purple-800 font-semibold">
+              SignUp
+            </li>
+          </ul>
+        </div>
+      )}
     </nav>
   );
 };
