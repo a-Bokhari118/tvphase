@@ -40,8 +40,8 @@ const MoviePage = ({ result }) => {
   console.log(allWrt);
   return (
     <section className="">
-      <div className="bg-black/90 z-10 absolute h-[70vh] inset-0"></div>
-      <div className="relative min-h-[70vh]">
+      <div className="bg-black/90 z-10 absolute lg:h-[70vh] xl:h-[70vh] md:h-[70vh] h-[80vh] inset-0"></div>
+      <div className="relative  min-h-[80vh] md:min-h-[70vh] xl:min-h-[70vh] lg:min-h-[70vh]">
         <Image
           src={
             `${BASE_URL}${result.backdrop_path || result.poster_path}` ||
@@ -52,8 +52,8 @@ const MoviePage = ({ result }) => {
         />
       </div>
 
-      <div className="absolute  top-5 left-5 flex container mx-auto justify-center items-start  h-[70vh] w-full py-16 z-50 text-white px-12">
-        <div className="relative h-[100%] w-[30%] flex-[0.3] ">
+      <div className="absolute top-1 left-0  md:top-5 md:left-5 md:flex md:container md:mx-auto justify-center items-start h-[80vh] lg:h-[70vh] xl:h-[70vh] md:h-[70vh] w-full  py-16 z-50 text-white px-12">
+        <div className="relative h-[100%] w-[30%] flex-[0.3] hidden md:block">
           <Image
             className="rounded-lg"
             src={
@@ -65,12 +65,12 @@ const MoviePage = ({ result }) => {
             objectFit="cover"
           />
         </div>
-        <div className="flex-[0.7] ml-10 ">
-          <div className="flex items-center mt-10">
-            <h1 className="font-bold text-4xl  ">
+        <div className="flex-[0.7] md:ml-10 my-auto">
+          <div className="md:flex md:items-center">
+            <h1 className="font-bold text-3xl md:text-4xl ">
               {result.title || result.original_name}
             </h1>
-            <span className="font-semibold text-2xl ml-2 text-gray-500">
+            <span className="font-semibold text-sm md:text-2xl ml-2 text-gray-500">
               &#40; {result?.release_date} &#41;
             </span>
           </div>
@@ -79,7 +79,7 @@ const MoviePage = ({ result }) => {
             {result.genres.map((item) => (
               <p
                 key={item.id}
-                className="text-xl bg-gray-800/50 py-2 px-3 text-white rounded shadow mr-3"
+                className="text-xs md:text-xl bg-gray-800/50 py-2 px-3 text-white rounded shadow mr-3"
               >
                 {item.name}
               </p>
@@ -89,11 +89,11 @@ const MoviePage = ({ result }) => {
             </p>
           </div>
 
-          <div className="text-xl font-semibold text-gray-100 mt-10 capitalize">
+          <div className="text-sm md:text-xl font-semibold text-gray-100 mt-10 capitalize">
             {result.overview}
           </div>
 
-          <div className="mt-10 grid grid-cols-3 grid-rows-2 gap-8">
+          <div className="mt-10 grid grid-cols-2 grid-rows-3 md:grid-cols-3 md:grid-rows-2 gap-4">
             {dirs.map((dir) => (
               <div key={dir.id}>
                 <h3 className="font-bold">{dir.name}</h3>
