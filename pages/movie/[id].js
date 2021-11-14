@@ -17,9 +17,10 @@ const MoviePage = ({ result }) => {
         />
       </div>
 
-      <div className="absolute top-5 left-5 flex container mx-auto justify-center items-center min-h-[70vh] w-full py-16 z-50">
-        <div className="h-full w-[80%] flex-[0.3]">
+      <div className="absolute  top-5 left-5 flex container mx-auto justify-center items-start  h-[70vh] w-full py-16 z-50 text-white px-12">
+        <div className="relative h-[100%] w-[30%] flex-[0.3] ">
           <Image
+            className="rounded-lg"
             src={
               `${BASE_URL}${result.poster_path}` ||
               result.backdrop_path ||
@@ -29,7 +30,28 @@ const MoviePage = ({ result }) => {
             objectFit="cover"
           />
         </div>
-        <div className="flex-[0.7]">adasasdas</div>
+        <div className="flex-[0.7] ml-10 ">
+          <div className="flex items-center mt-10">
+            <h1 className="font-bold text-4xl  ">
+              {result.title || result.original_name}
+            </h1>
+            <span className="font-semibold text-2xl ml-2 text-gray-500">
+              &#40; {result?.release_date} &#41;
+            </span>
+          </div>
+
+          <div className="flex items-center mt-4">
+            {result.genres.map((item) => (
+              <p
+                key={item.id}
+                className="text-xl bg-gray-800/50 py-2 px-3 text-white rounded shadow mr-3"
+              >
+                {item.name}
+              </p>
+            ))}
+            <p></p>
+          </div>
+        </div>
       </div>
     </section>
   );
