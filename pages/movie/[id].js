@@ -113,7 +113,14 @@ const MoviePage = ({ result }) => {
               </div>
             ))}
           </div>
-          <div></div>
+          <div className="flex mt-10 ">
+            <button className="py-2 px-3 bg-gray-500/50 text-white border-none rounded-md hover:shadow-md hover:bg-gray-300 hover:text-gray-900 font-semibold capitalize">
+              Play Trailer
+            </button>
+            <button className="py-2 px-3 bg-gray-500/50 text-white border-none rounded-md hover:shadow-md hover:bg-gray-300 hover:text-gray-900 font-semibold capitalize ml-5">
+              Add to watch list
+            </button>
+          </div>
         </div>
       </div>
     </section>
