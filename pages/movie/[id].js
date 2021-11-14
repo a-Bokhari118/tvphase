@@ -2,7 +2,42 @@ import axios from 'axios';
 import Image from 'next/image';
 const MoviePage = ({ result }) => {
   const BASE_URL = 'https://image.tmdb.org/t/p/original/';
+  console.log(result);
 
+  const allPro = [];
+  const alldir = [];
+  const allWrt = [];
+  for (let i = 0; i < result.credits.crew.length; i++) {
+    if (
+      result.credits.crew[i].department === 'Production' &&
+      result.credits.crew[i].job === 'Producer'
+    ) {
+      allPro.push(result.credits.crew[i]);
+    }
+  }
+
+  const pros = allPro.length >= 3 ? allPro.slice(0, 3) : allPro;
+
+  for (let i = 0; i < result.credits.crew.length; i++) {
+    if (
+      result.credits.crew[i].department === 'Directing' &&
+      result.credits.crew[i].job === 'Director'
+    ) {
+      alldir.push(result.credits.crew[i]);
+    }
+  }
+  const dirs = alldir.length >= 3 ? alldir.slice(0, 3) : alldir;
+
+  for (let i = 0; i < result.credits.crew.length; i++) {
+    if (
+      result.credits.crew[i].department === 'Writing' &&
+      result.credits.crew[i].job === 'Story'
+    ) {
+      allWrt.push(result.credits.crew[i]);
+    }
+  }
+  const wrts = allWrt.length >= 3 ? allWrt.slice(0, 3) : allWrt;
+  console.log(allWrt);
   return (
     <section className="">
       <div className="bg-black/90 z-10 absolute h-[70vh] inset-0"></div>
@@ -49,8 +84,36 @@ const MoviePage = ({ result }) => {
                 {item.name}
               </p>
             ))}
-            <p></p>
+            <p className="text-base text-gray-200">
+              {Math.floor(result.runtime / 60)}h {result.runtime % 60}m
+            </p>
           </div>
+
+          <div className="text-xl font-semibold text-gray-100 mt-10 capitalize">
+            {result.overview}
+          </div>
+
+          <div className="mt-10 grid grid-cols-3 grid-rows-2 gap-8">
+            {dirs.map((dir) => (
+              <div key={dir.id}>
+                <h3 className="font-bold">{dir.name}</h3>
+                <p>{dir.job}</p>
+              </div>
+            ))}
+            {wrts.map((wrt) => (
+              <div key={wrt.id}>
+                <h3 className="font-bold">{wrt.name}</h3>
+                <p>{wrt.job}</p>
+              </div>
+            ))}
+            {pros.map((pro) => (
+              <div key={pro.id}>
+                <h3 className="font-bold">{pro.name}</h3>
+                <p>{pro.job}</p>
+              </div>
+            ))}
+          </div>
+          <div></div>
         </div>
       </div>
     </section>
@@ -63,7 +126,7 @@ export async function getServerSideProps(context) {
   const { id } = context.query;
 
   const { data } = await axios.get(
-    `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.API_KEY}&language=en-US`
+    `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.API_KEY}&language=en-US&append_to_response=credits`
   );
 
   return {
