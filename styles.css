@@ -1,8 +1,9 @@
 @tailwind base;
 @tailwind components;
+@tailwind utilities;
 
 @layer base {
   body {
-    @apply bg-gradient-to-br from-[rgb(35,35,39)] to-[rgb(0,0,0)];
+    @apply bg-gradient-to-br from-[rgb(35,35,39)] to-[rgb(0,0,0)] bg-no-repeat bg-cover;
   }
 }
