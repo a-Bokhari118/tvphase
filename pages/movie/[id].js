@@ -48,6 +48,7 @@ const MoviePage = ({ result }) => {
   const allPro = [];
   const alldir = [];
   const allWrt = [];
+  const cast = result.credits.cast.slice(0, 20);
   for (let i = 0; i < result.credits.crew.length; i++) {
     if (
       result.credits.crew[i].department === 'Production' &&
@@ -172,9 +173,24 @@ const MoviePage = ({ result }) => {
       </section>
       <section className="bg-[#000000] py-12 px-5">
         <div className="flex flex-col lg:flex-row">
-          <div className="  flex-[0.5] ">
-            <h1 className="text-white text-3xl font-bold">More Videos</h1>
-            <div className="flex flex-col lg:flex-row pt-5 ">
+          <div className="  flex-[0.9] overflow-hidden">
+            <h1 className="text-white text-3xl font-bold">Movie Cast</h1>
+            <div className="flex pt-5 overflow-x-scroll">
+              {cast.map((item) => (
+                <div className="relative h-52 w-40 ">
+                  <Image
+                    src={
+                      `${BASE_URL}${item.profile_path} ` ||
+                      '/images/unknown.jpg'
+                    }
+                    layout="fill"
+                    objectFit="cover"
+                    className="rounded-xl"
+                  />
+                </div>
+              ))}
+            </div>
+            {/* <div className="flex flex-col lg:flex-row pt-5 ">
               {vids.map((vid, index) => (
                 <div
                   className="rounded lg:pr-5 pt-5 cursor-pointer h-72"
@@ -189,9 +205,9 @@ const MoviePage = ({ result }) => {
                   />
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
-          <div className="ml-5 flex-[0.5]">
+          <div className="ml-5 flex-[0.1]">
             <h1 className="text-white text-3xl font-bold">Movie Details</h1>
             <div className="pt-8 space-y-5 text-white">
               <h3>
