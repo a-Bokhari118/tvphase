@@ -4,21 +4,19 @@ const MovieCard = ({ result }) => {
   const router = useRouter();
   const BASE_URL = 'https://image.tmdb.org/t/p/original/';
   return (
-    <div className="flex m-5 relative group  rounded-lg  shadow-xl cursor-pointer   hover:border-opacity-80 hover:shadow-2xl transform hover:scale-105 trasition duration-300  overflow-ellipsis">
+    <div className="flex m-5 relative   rounded-lg  shadow-xl cursor-pointer   hover:border-opacity-80 hover:shadow-2xl transform hover:scale-105 trasition duration-300  overflow-ellipsis">
       <Image
         src={
-          `${BASE_URL}${result.backdrop_path || result.poster_path}` ||
+          `${BASE_URL}${result.poster_path}` ||
+          result.backdrop_path ||
           `${BASE_URL}${result.poster_path}`
         }
-        width={330}
-        height={210}
+        width={230}
+        height={310}
         objectFit="cover"
         className="rounded-lg"
         onClick={() => router.push(`/movie/${result.id}`)}
       />
-      <span className="absolute bottom-0 left-0 font-bold text-sm text-white group-hover:bg-gray-900 p-2 m-1 rounded-xl transition duration-300  ">
-        {result.title || result.original_name}
-      </span>
     </div>
   );
 };
