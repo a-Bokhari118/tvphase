@@ -1,8 +1,8 @@
 import axios from 'axios';
 import Image from 'next/image';
+import { PlayIcon, DocumentAddIcon } from '@heroicons/react/solid';
 const MoviePage = ({ result }) => {
   const BASE_URL = 'https://image.tmdb.org/t/p/original/';
-  console.log(result);
 
   const allPro = [];
   const alldir = [];
@@ -36,12 +36,13 @@ const MoviePage = ({ result }) => {
       allWrt.push(result.credits.crew[i]);
     }
   }
+
   const wrts = allWrt.length >= 3 ? allWrt.slice(0, 3) : allWrt;
   console.log(allWrt);
   return (
-    <section className="">
-      <div className="bg-black/90 z-10 absolute lg:h-[70vh] xl:h-[70vh] md:h-[70vh] h-[80vh] inset-0"></div>
-      <div className="relative  min-h-[80vh] md:min-h-[70vh] xl:min-h-[70vh] lg:min-h-[70vh]">
+    <section className="relative min-h-screen md:min-h-[70vh]">
+      <div className="bg-black/90 z-10 absolute  md:min-h-[70vh]  min-h-screen inset-0"></div>
+      <div className="relative min-h-screen  md:min-h-[70vh]  lg:min-h-[80vh]">
         <Image
           src={
             `${BASE_URL}${result.backdrop_path || result.poster_path}` ||
@@ -52,8 +53,8 @@ const MoviePage = ({ result }) => {
         />
       </div>
 
-      <div className="absolute top-1 left-0  md:top-5 md:left-5 md:flex md:container md:mx-auto justify-center items-start h-[80vh] lg:h-[70vh] xl:h-[70vh] md:h-[70vh] w-full  py-16 z-50 text-white px-12">
-        <div className="relative h-[100%] w-[30%] flex-[0.3] hidden md:block">
+      <div className="absolute top-1 left-0  lg:top-5 lg:left-5 lg:flex md:container md:mx-auto justify-center items-start min-h-full lg:h-[70vh] w-full py-5 lg:py-16 z-50 text-white px-5 lg:px-12">
+        <div className="relative h-full w-full flex-[0.3] hidden md:block">
           <Image
             className="rounded-lg"
             src={
@@ -65,7 +66,7 @@ const MoviePage = ({ result }) => {
             objectFit="cover"
           />
         </div>
-        <div className="flex-[0.7] md:ml-10 my-auto">
+        <div className="flex-[0.7] md:ml-10 my-auto pb-2">
           <div className="md:flex md:items-center">
             <h1 className="font-bold text-3xl md:text-4xl ">
               {result.title || result.original_name}
@@ -114,11 +115,11 @@ const MoviePage = ({ result }) => {
             ))}
           </div>
           <div className="flex mt-10 ">
-            <button className="py-2 px-3 bg-gray-500/50 text-white border-none rounded-md hover:shadow-md hover:bg-gray-300 hover:text-gray-900 font-semibold capitalize">
-              Play Trailer
+            <button className="flex items-center  py-2 px-3 bg-gray-500/50 text-white border-none rounded-md hover:shadow-md hover:bg-gray-300 hover:text-gray-900 font-semibold capitalize">
+              <PlayIcon className="w-5 h-5 pr-1" /> Play Trailer
             </button>
-            <button className="py-2 px-3 bg-gray-500/50 text-white border-none rounded-md hover:shadow-md hover:bg-gray-300 hover:text-gray-900 font-semibold capitalize ml-5">
-              Add to watch list
+            <button className="flex  items-center py-2 px-3 bg-gray-500/50 text-white border-none rounded-md hover:shadow-md hover:bg-gray-300 hover:text-gray-900 font-semibold capitalize ml-5">
+              <DocumentAddIcon className="w-5 h-5 pr-1" /> Add to watch list
             </button>
           </div>
         </div>
