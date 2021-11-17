@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { PlayIcon, DocumentAddIcon } from '@heroicons/react/solid';
 import Slider from 'react-slick';
 import ReactPlayer from 'react-player';
+import millify from 'millify';
 const MoviePage = ({ result }) => {
   const BASE_URL = 'https://image.tmdb.org/t/p/original/';
   console.log(result);
@@ -40,7 +41,10 @@ const MoviePage = ({ result }) => {
       },
     ],
   };
-
+  const vids =
+    result?.videos.results.length > 2
+      ? result?.videos.results.slice(0, 2)
+      : result?.videos.results;
   const allPro = [];
   const alldir = [];
   const allWrt = [];
@@ -166,12 +170,12 @@ const MoviePage = ({ result }) => {
           </div>
         </div>
       </section>
-      <section className="bg-[#616161] py-12 px-5">
+      <section className="bg-[#000000] py-12 px-5">
         <div className="flex flex-col lg:flex-row">
-          <div className="overflow-x-scroll overflow-y-scroll flex-[0.5] h-60">
+          <div className="  flex-[0.5] ">
             <h1 className="text-white text-3xl font-bold">More Videos</h1>
             <div className="flex flex-col lg:flex-row pt-5 ">
-              {result?.videos.results.map((vid, index) => (
+              {vids.map((vid, index) => (
                 <div
                   className="rounded lg:pr-5 pt-5 cursor-pointer h-72"
                   key={index}
@@ -189,6 +193,20 @@ const MoviePage = ({ result }) => {
           </div>
           <div className="ml-5 flex-[0.5]">
             <h1 className="text-white text-3xl font-bold">Movie Details</h1>
+            <div className="pt-8 space-y-5 text-white">
+              <h3>
+                <b>Released Date:</b> {result.release_date}
+              </h3>
+              <h3>
+                <b>Original Language:</b> {result.original_language}
+              </h3>
+              <h3>
+                <b>Budget:</b> {millify(result.budget)}
+              </h3>
+              <h3>
+                <b>Revenue:</b> {millify(result.revenue)}
+              </h3>
+            </div>
           </div>
         </div>
       </section>
