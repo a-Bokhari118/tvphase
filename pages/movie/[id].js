@@ -173,11 +173,11 @@ const MoviePage = ({ result }) => {
       </section>
       <section className="bg-[#000000] py-12 px-5">
         <div className="flex flex-col lg:flex-row">
-          <div className="  flex-[0.9] overflow-hidden">
+          <div className="  flex-[0.8] overflow-x-scroll">
             <h1 className="text-white text-3xl font-bold">Movie Cast</h1>
-            <div className="flex pt-5 overflow-x-scroll">
+            <div className="flex pt-5 ">
               {cast.map((item) => (
-                <div className="relative h-52 w-40 ">
+                <div className="relative h-52 w-40 mr-5 p-20">
                   <Image
                     src={
                       `${BASE_URL}${item.profile_path} ` ||
@@ -207,7 +207,7 @@ const MoviePage = ({ result }) => {
               ))}
             </div> */}
           </div>
-          <div className="ml-5 flex-[0.1]">
+          <div className="ml-5 flex-[0.2]">
             <h1 className="text-white text-3xl font-bold">Movie Details</h1>
             <div className="pt-8 space-y-5 text-white">
               <h3>
